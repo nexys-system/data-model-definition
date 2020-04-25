@@ -1,44 +1,126 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# JSON Data Definition Language (DDL)
 
-## Available Scripts
+[![npm version](https://badge.fury.io/js/%40nexys%2Fdigis-ddl.svg)](https://www.npmjs.com/package/@nexys/digis-ddl)
+[![npm version](https://img.shields.io/npm/v/@nexys/digis-ddl.svg)](https://www.npmjs.com/package/@nexys/digis-ddl)
+[![CircleCi](https://circleci.com/gh/Nexysweb/digis-ddl.svg?style=svg)](https://circleci.com/gh/Nexysweb/digis-ddl)
+[![TavisCI](https://travis-ci.com/Nexysweb/digis-ddl.svg?branch=master)](https://travis-ci.com/Nexysweb/digis-ddl)
 
-In the project directory, you can run:
+### See it in action
 
-### `yarn start`
+There is an available UI to test different JSON structures described [here](https://nexysweb.github.io/digis-ddl/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Check out
+* [CRUD.md](https://github.com/Nexysweb/digis-ddl/blob/master/crud.md)
+* [FetchR.md](https://github.com/Nexysweb/digis-ddl/blob/master/fetch-r.md)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+We define an array of entities. All entities have attributes and are assigned primary keys in the form of ids or uuids.
 
-### `yarn test`
+## Entity
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Arg Name    |  Possible values                                                                 | Example     |
+|-------------|----------------------------------------------------------------------------------|-------------|
+| name        | name of the entity. has to start with a capital letter                           | "Country"   |
+| table       | name of the SQL table. This field is optional, if not given the table is the snake case version of name                                                                                                        | `my_country`|
+| uuid        | boolean, if set to true, the primary key is a uuid vs a id                       | `false`     |
+| withOrder   | allows ordering (UI: drag/drop)                                                  | `false`     |
+| description | description of the entity, optional                                              |             |
+| logUser     | saves user id                                                                    | `false`     |
+| isLog       | add log logic in table                                                           | `false`     |
+| logTable    | creates mirror log table                                                         | `false`     |
+| extends     | extends a particular preprogrammed entity (e.g. user)                            | `null`      |
+| uniqueSet   | array with combination of params that are unique (e.g `["countryId", "userId"]`) | `null`      |
 
-### `yarn build`
+## Attribute
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+| Arg Name    |  Possible values                                                | Default     |
+|-------------|-----------------------------------------------------------------|-------------|
+| Name        | *field name*                                                    | -           |
+| type        | [see section](#field-types)                                     | string      |
+| optional    | true/false                                                      | `false`     |
+| constraints | [see section](#constraints)                                     | `[]`        |
+| description | description of the attribute                                    |             |
+| ui          | {textarea, datepicker, slider, etc..}                           | `fieldType` |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### Field Types
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| Type     | Example values       |
+|----------|----------------------|
+| Int      | 1, 2, 3              |
+| Long     | 65432345, 2345432345 |
+| String   | hello                |
+| Boolean  | true / false         |
+| Decimal  | 23.34                |
+| Date     | 2019-01-31           |
+| Datetime | 2019-01-31 15:23     |
+| Time     | 15:23                |
+| -        | Country              |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Every entity name automatically becomes a type. Hence the last example of the table where the type is `Country`, referring to the entity `Country` and creating a relation with that other entity.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+a more formal version can be found in https://github.com/Nexysweb/DevelopmentConsultingFramework/blob/master/src/types.js
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### mapping SQL JSON-ddl
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+BigDecimal => Decimal 10, 4
+Int => int(11)
+Long => bigint(20)
+LocalDateTime => Datetime
+LocalDate => Datetime
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Constraints
+
+| Arg Name    |  Possible values                                                | Default     |
+|-------------|-----------------------------------------------------------------|-------------|
+| typeId      | [see section](#constraint-types)                                | -           |
+| value       | value of the constraint                                         | -           |
+| msg         | overrides default message                                       | -           |
+
+#### Constraint Types
+* 1: equal `=` (number)
+* 2: greater than `>` (number(
+* 3: less than `<` (number
+* 4: greater than or equal `>=` (number)
+* 5: less than or equal `<=` (number)
+* 6: length (string) => https://stackoverflow.com/questions/9043820/regex-to-match-words-of-a-certain-length
+* 7: Regex (string)
+* 8: belongs to a predefined set: [9, 87, 34] (all)
+* 9: async call to API (link to an API request) (string)
+
+## Checking format
+
+The format can be checked with the `schema-validation`: https://github.com/Nexysweb/DevelopmentConsultingFramework/blob/master/src/schema-validation.js
+
+## Variable types
+
+### Explicit variables
+
+Explicit variables need to be explicitly specified when inserting a record (are part of the payload)
+
+### Implicit variables
+
+Implicit variables are not explicitly stated. E.g. taken from auth (`userId`)
+
+### System variables
+
+System variables are not speicified in the model.
+
+Examples are:
+
+* id / uuid
+* dateAdded
+* dateEdited
+
+## Example (simple)
+
+This is an example of a simple model, that links countries and cities. 
+
+https://github.com/Nexysweb/digis-ddl/tree/master/src/example/simple-country-city.json
+
+## Example (advanced)
+
+https://github.com/Nexysweb/digis-ddl/tree/master/src/example/advanced.js
