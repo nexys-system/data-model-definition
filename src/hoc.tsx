@@ -1,13 +1,6 @@
 import React from 'react';
 
-const isJson = (j:string):any => {
-  try {
-    JSON.parse(j)
-    return true;
-  } catch (err) {
-    return false;
-  }
-}
+import { isJson } from './utils'
 
 export default (validationFunc:any) => (WrappedComponent:any) => class Hoc extends React.Component {
   state:{content: string, errors: any[] | null, message?:string};
@@ -43,8 +36,8 @@ export default (validationFunc:any) => (WrappedComponent:any) => class Hoc exten
     this.setState({errors, message});
   }
 
-  handleChange = (a:any) => {
-    const content = a.target.value;
+  handleChange = (a:React.ChangeEvent<HTMLTextAreaElement>) => {
+    const content:string = a.target.value;
 
     this.setState({content});
   }

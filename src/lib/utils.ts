@@ -53,3 +53,5 @@ export const generateInterface = (def: DataDef):string => {
   ${fieldsTs}
 }`
 }
+
+export const generateInterfaces = (defs: DataDef[]):string => defs.map(u => generateInterface(u)).join('\n\n');
