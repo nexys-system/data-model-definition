@@ -1,26 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Icon from './components/icon';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default () => (<div className="container">
+  <h1>DDL Checker</h1>
+  <p>Use the menu to explore the different functionalities of the package</p>
 
-export default App;
+  <p><a href="https://github.com/Nexysweb/digis-ddl"><Icon name="code"/> Source</a> under MIT license</p>
+</div>);
+
