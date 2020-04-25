@@ -1,5 +1,4 @@
 import * as OpenApi from './open-api';
-import * as Y from './yaml';
 import * as T from './type';
 
 test('toUnit', () => {
@@ -72,8 +71,7 @@ test('toOpenApi', () => {
   };
 
   const r = OpenApi.toOpenApiJson(dd);
-  const rYaml = OpenApi.toOpenApi(dd);
+  
 
   expect(r).toEqual(e);
-  expect(Y.toJson(rYaml)).toEqual(e);
 });

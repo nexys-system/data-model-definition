@@ -1,4 +1,3 @@
-import * as Y from './yaml';
 import * as T from './type';
 
 export const toOpenApiType = (t:string):T.OpenApiType => {
@@ -48,5 +47,3 @@ export const toOpenApiJson = (dd:T.DdEntity[]) :T.OpenApiSchema => {
 
   return r;
 }
-
-export const toOpenApi = (dd:T.DdEntity[]):string => Y.toYaml(toOpenApiJson(dd));
