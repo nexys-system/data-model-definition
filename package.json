@@ -26,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "PUBLIC_URL=/ddl react-scripts build; rm -rf docs; mv build docs; cp docs/index.html docs/404.html",
-    "buildPackage": "rimraf dist/ && babel src/lib --out-dir dist/;rm dist/*.test.js",
+    "buildPackage": "rimraf dist/ && babel src/lib --out-dir dist/;rm dist/*.test.js"
   },
   "eslintConfig": {
     "extends": "react-app"
