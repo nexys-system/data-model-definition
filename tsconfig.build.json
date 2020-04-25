@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "jsx": "react",
     "declaration": true,
     "outDir": "dist/",
     "strict": true,
@@ -19,9 +18,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false
+    "noEmit": false,
+    "removeComments": true
   },
   "include": [
     "src/lib/**/*"
-  ]
+  ],
+  "exclude" : ["src/**/*.test.ts"]
 }
