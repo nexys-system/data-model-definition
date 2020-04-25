@@ -1,17 +1,16 @@
 # JSON Data Definition Language (DDL)
 
-[![npm version](https://badge.fury.io/js/%40nexys%2Fdigis-ddl.svg)](https://www.npmjs.com/package/@nexys/digis-ddl)
-[![npm version](https://img.shields.io/npm/v/@nexys/digis-ddl.svg)](https://www.npmjs.com/package/@nexys/digis-ddl)
-[![CircleCi](https://circleci.com/gh/Nexysweb/digis-ddl.svg?style=svg)](https://circleci.com/gh/Nexysweb/digis-ddl)
-[![TavisCI](https://travis-ci.com/Nexysweb/digis-ddl.svg?branch=master)](https://travis-ci.com/Nexysweb/digis-ddl)
+[![npm version](https://badge.fury.io/js/%40nexys%2Fddl.svg)](https://www.npmjs.com/package/@nexys/ddl)
+[![npm version](https://img.shields.io/npm/v/@nexys/ddl.svg)](https://www.npmjs.com/package/@nexys/ddl)
+[![CircleCi](https://circleci.com/gh/Nexysweb/ddl.svg?style=svg)](https://circleci.com/gh/Nexysweb/ddl)
 
 ### See it in action
 
-There is an available UI to test different JSON structures described [here](https://nexysweb.github.io/digis-ddl/)
+There is an available UI to test different JSON structures described [here](https://nexysweb.github.io/ddl/)
 
 Check out
-* [CRUD.md](https://github.com/Nexysweb/digis-ddl/blob/master/crud.md)
-* [FetchR.md](https://github.com/Nexysweb/digis-ddl/blob/master/fetch-r.md)
+* [CRUD.md](https://github.com/Nexysweb/ddl/blob/master/crud.md)
+* [FetchR.md](https://github.com/Nexysweb/ddl/blob/master/fetch-r.md)
 
 We define an array of entities. All entities have attributes and are assigned primary keys in the form of ids or uuids.
 
@@ -119,8 +118,8 @@ Examples are:
 
 This is an example of a simple model, that links countries and cities. 
 
-https://github.com/Nexysweb/digis-ddl/tree/master/src/example/simple-country-city.json
+https://github.com/Nexysweb/ddl/tree/master/src/example/simple-country-city.json
 
 ## Example (advanced)
 
-https://github.com/Nexysweb/digis-ddl/tree/master/src/example/advanced.js
+https://github.com/Nexysweb/ddl/tree/master/src/example/advanced.js
