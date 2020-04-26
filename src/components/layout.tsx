@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const LeftRight = (props:({left:any, right:any})) => {
+export const LeftRight = (props:({title: string, left:any, right:any})) => {
   return <div className="container">
-    <h2>Schema to Typescript</h2>
+    <h2>{props.title}</h2>
 
     <div className="row">
       <div className="col-md-6">

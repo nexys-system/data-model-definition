@@ -45,7 +45,7 @@ export const date = ():Date => {
   return d;
 }
 
-export const any = (type:string, optional: boolean = false) => {
+export const any = (type:string, optional: boolean = false):any | null => {
   if (optional && boolean()) {
     return undefined;
   }
@@ -64,7 +64,9 @@ export const any = (type:string, optional: boolean = false) => {
   }
 }
 
-export const row = (rowDef: T.DdParams2[], isUuid: boolean = false) => {
+const types = ['Int', 'Float', 'Boolean', 'LocalDateTime', 'LocalDate', 'String']
+
+export const row = (rowDef: T.DdParams2[], isUuid: boolean = false):{[k:string]: any} => {
   const o:{[k:string]: any} = {id: integer()};
 
   if(isUuid) {
@@ -83,16 +85,3 @@ export const row = (rowDef: T.DdParams2[], isUuid: boolean = false) => {
   return o;
 }
 
-export const rowAndProjection = (rowDef: T.DdParams2[], projection: TQ.Projection) => {
-  const r = row(rowDef);
-
-  Object.keys(projection).map(k => {
-    const v:boolean | TQ.Projection = projection[k];
-
-    if (v === false) {
-      delete(r[k]);
-    }
-  })
-
-  return r;
-}

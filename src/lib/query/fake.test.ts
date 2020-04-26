@@ -1,5 +1,6 @@
 import * as F from './fake';
 import * as T from '../type';
+import * as I from './index';
 
 test('string', () => {
   expect(typeof F.string()).toEqual('string')
@@ -49,7 +50,7 @@ test('fakeRow', () => {
   expect(['undefined', 'string'].includes(typeof r.myOptString)).toEqual(true)
 
   // with projection
-  const r2 = F.rowAndProjection(e,{myDate: false, myBool: false, myNumber: false});
+  const r2 = I.rowAndProjection(e,{myDate: false, myBool: false, myNumber: false});
   expect(typeof r2.id).toEqual('number')
   expect(typeof r2.myName).toEqual('string')
   expect(typeof r2.myBool).toEqual('undefined')

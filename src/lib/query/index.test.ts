@@ -15,6 +15,7 @@ const m1:TS.DdEntity2 = {
     {name: 'f1', type: 'String'},
     {name: 'f2', type: 'Integer'},
     {name: 'f1', type: 'Boolean', optional: true},
+    {name: 'status', type: entityName2, optional: true}
   ]
 }
 
@@ -49,6 +50,18 @@ test('fakeDataFromQuery', () => {
   expect(Array.isArray(e[entityName2])).toEqual(true)
   expect(e[entityName2].length).toBeGreaterThan(0)
   expect(typeof e[entityName2][0]).toEqual('object')
+})
+
+test('fakeDataFromParams', () => {
+  const query = {[entityName1]: {projection: {status:{}}}};
+  const e = I.fakeDataFromQuery(query, models);
+
+  console.log(JSON.stringify(e))
+
+  expect(Object.keys(e)[0]).toEqual(entityName1);
+  expect(Array.isArray(e[entityName1])).toEqual(true)
+  expect(e[entityName1].length).toBeGreaterThan(0)
+  expect(typeof e[entityName1][0]).toEqual('object')
 })
 
 

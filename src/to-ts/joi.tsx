@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import { Textarea, Error, Code, Layout } from '../components';
 import { isJson }  from '../utils';
 import { companyDef } from '../lib/utils.data';
-import { getOutput } from  './utils';
+import { getJoiSchema } from  './utils';
 
 export default () => {
-  const [ content, setContent] = useState<string>(JSON.stringify(companyDef, null, 2));
+  const [ content, setContent] = useState<string>(JSON.stringify(companyDef.fields, null, 2));
   const [ output, setOutput ] = useState<string | null>(null)
   const [ error, setError] = useState<string | null>(null);
 
@@ -22,7 +22,7 @@ export default () => {
 
   const convert = () => {
     try {
-      const o = getOutput(content);
+      const o = getJoiSchema(content);
       setOutput(o);
     } catch (_err) {
       setError('can\'t convert')
@@ -39,5 +39,5 @@ export default () => {
 
   const right = output && <Code value={output}/>
 
-  return <Layout.LeftRight title={'Schema to Typescript'} left={left} right={right}/>;
+  return <Layout.LeftRight title={'Schema to Joi'} left={left} right={right}/>;
 };

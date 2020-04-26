@@ -1,4 +1,6 @@
 import { generateInterface, DataDef, generateInterfaces } from '../lib/utils';
+import { schemaTextFromDd } from '../lib/joi-utils'
+import { DdParams2 } from '../lib/type';
 
 export const getOutput = (content: string):string => {
   const j = JSON.parse(content)
@@ -13,4 +15,11 @@ export const getOutput = (content: string):string => {
       return generateInterface(j as DataDef);
     }
   }
+}
+
+export const getJoiSchema = (content: string):string => {
+  const j = JSON.parse(content)
+
+
+  return schemaTextFromDd(j as DdParams2[]);
 }

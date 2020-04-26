@@ -23,9 +23,37 @@ export const getType = (typeName:string):JoiOut => {
   }
 }
 
+export const getTypeString = (typeName:string):string => {
+  switch(typeName) {
+    case 'String':
+      return 'Joi.string()';
+    case 'Boolean':
+      return 'Joi.boolean()';
+    case 'Int':
+    case 'BigDecimal':
+    case 'Double':
+      return 'Joi.number()';
+    case 'LocalDateTime':
+      return 'Joi.date()';
+    case 'LocalDate':
+      return 'Joi.string()';
+    default:
+      console.warn(`The type "${typeName}" could not be converted to Joi, this may create some errors`);
+      return 'Joi.string()';
+  }
+}
+
 export const appendOptional = (j:JoiOut, optional:boolean = false):JoiOut => {
   if (!optional) {
     return j.required();
+  }
+
+  return j;
+}
+
+export const appendOptionalString = (j:string, optional:boolean = false):string => {
+  if (!optional) {
+    return j + '.required()';
   }
 
   return j;
@@ -51,4 +79,14 @@ export const schemaFromDd = (dd:T.DdParams[], optouts:string[] = []):{[name:stri
   });
 
   return r;
+}
+
+export const schemaTextFromDd = (dd:T.DdParams2[], optouts:string[] = []):string => {
+  
+
+  const r = dd.filter(x => !optouts.includes(x.name) ).map(line => {
+    return '  ' + line.name + ': ' + appendOptionalString(getTypeString(line.type), line.optional);
+  }).join(',\n');
+
+  return 'Joi.Object({\n' + r + '\n});'
 }
