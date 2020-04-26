@@ -13,6 +13,6 @@ test('mapTypeToTs', () => {
 
 test('generateInterface', () => {
   const generateInterface = I.generateInterface(companyDef);
-  console.log(generateInterface)
+  // console.log(generateInterface)
   expect(generateInterface).toEqual(companyInterface)
 });

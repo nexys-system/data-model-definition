@@ -26,7 +26,7 @@ const modelSchema = Joi.object().keys({
 const modelDefSchema = Joi.array().items(modelSchema).required();
 
 const checkTypes = (model:T.DdEntity2[]) => {
-  console.log(typeof model)
+  //console.log(typeof model)
   let ts:string[] = []
 
   const tNames:string[] = model.map(m => {
