@@ -15,7 +15,10 @@ export interface Filters {
   [attr:string]: string | boolean | number | Date | FiltersIn | Filters
 }
 
-export interface References {}
+// todo: doublecheck, currently same structure as Query
+export interface References {
+  [entity:string]: Params
+}
 
 export interface Params {
   filters?: Filters,
