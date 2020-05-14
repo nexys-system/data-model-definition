@@ -1,8 +1,3 @@
-// Query validation
-// https://github.com/Nexysweb/digis-ddl/blob/master/src/lib/query-validation.jshttps://github.com/Nexysweb/digis-ddl/blob/master/src/lib/query-validation.js
-
-// merge with the following?
-
 export interface Projection {
   [attr:string]: boolean | Projection
 }
