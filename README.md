@@ -122,4 +122,4 @@ https://github.com/Nexysweb/ddl/tree/master/src/example/simple-country-city.json
 
 ## Example (advanced)
 
-https://github.com/Nexysweb/ddl/tree/master/src/example/advanced.js
+https://github.com/Nexysweb/ddl/tree/master/src/example/advanced.ts
