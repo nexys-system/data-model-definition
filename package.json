@@ -1,6 +1,6 @@
 {
   "name": "@nexys/ddl",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
@@ -9,12 +9,11 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "@types/hapi__joi": "^16.0.12"
-    
   },
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
-   "testWatch": "yarn test --watch",
+    "testWatch": "yarn test --watch",
     "eject": "react-scripts eject",
     "build": "PUBLIC_URL=/ddl react-scripts build; rm -rf docs; mv build docs; cp docs/index.html docs/404.html",
     "buildPackage": "tsc -p tsconfig.build.json"
