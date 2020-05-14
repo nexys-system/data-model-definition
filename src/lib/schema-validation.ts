@@ -2,7 +2,7 @@ import Joi from '@hapi/joi';
 import * as T from './type';
 import { jvmTypes as Types } from './type';
 
-const modelParamSchema = Joi.object().keys({
+const modelParamSchema:Joi.ObjectSchema<T.DdParams2> = Joi.object().keys({
   name: Joi.string().alphanum().required(),
   column: Joi.string().optional(),
   type: Joi.string().alphanum().required(),
@@ -13,7 +13,7 @@ const modelParamSchema = Joi.object().keys({
 
 // for params, the value of `arg` has to be unique
 // https://github.com/hapijs/joi/issues/1159]
-const modelSchema = Joi.object().keys({
+const modelSchema:Joi.ObjectSchema<T.DdEntity2> = Joi.object().keys({
   name: Joi.string().alphanum().required(),
   uuid: Joi.boolean().optional(),
   table: Joi.string().optional(),
@@ -23,10 +23,9 @@ const modelSchema = Joi.object().keys({
   constraints: Joi.array()
 });
 
-const modelDefSchema = Joi.array().items(modelSchema).required();
+const modelDefSchema:Joi.ArraySchema = Joi.array().items(modelSchema).required();
 
 const checkTypes = (model:T.DdEntity2[]) => {
-  //console.log(typeof model)
   let ts:string[] = []
 
   const tNames:string[] = model.map(m => {
@@ -55,13 +54,11 @@ const checkTypes = (model:T.DdEntity2[]) => {
  * validates a model of the JSON ddl
  */
 const validateModelDef = (model:object):{status: boolean, errors: string[] | null} => {
-  const schema = modelDefSchema;
-
-  const result = schema.validate(model, { abortEarly: false });
+  const result = modelDefSchema.validate(model, { abortEarly: false });
 
   if (result.error === undefined || result.error === null) {
     // here check if types all exist
-    const jModel:T.DdEntity2[] = model as T.DdEntity2[]
+    const jModel:T.DdEntity2[] = result.value
     const errors = checkTypes(jModel);
 
     if (errors.length > 0) {
