@@ -32,7 +32,7 @@ export const projectionToType = (entity: string, projection: Projection, model: 
     const entityChild = findEntity(entity, k, model);
     const ent = projectionToType(entityChild, obj as Projection, model)
 
-    return ` & (${k}: ${ent})`
+    return ` & {${k}: ${ent}}`
   })
 
   const listPick = projKeys.filter(k => {
@@ -65,7 +65,7 @@ export const refTypes = (references:References, model: T.DdEntity2[]):string => 
   const refTypes = Object.keys(references).map(entity => {
     const projection:Projection = references[entity].projection || {};
     const p = paramsToType(entity, projection, {}, model); // here reference does not exist => {}
-    return ` & (${entity}: ${p})`
+    return ` & {${entity}: ${p}}`
   });
 
   if (refTypes.length === 0) {

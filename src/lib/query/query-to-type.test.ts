@@ -39,7 +39,7 @@ test('projection to type 2 - omit', () => {
 test('projection to type 3 - ref', () => {
   const projection:Projection = {status: {}};
 
-  const r = `MyEntity & (status: EntityName2)`
+  const r = `MyEntity & {status: EntityName2}`
 
   expect(Q.projectionToType(entity, projection, DataSample.model)).toEqual(r);
 });
@@ -47,7 +47,7 @@ test('projection to type 3 - ref', () => {
 test('projection to type 4 - ref', () => {
   const projection:Projection = {status: {name: true, address: true}};
 
-  const r = `MyEntity & (status: Pick<EntityName2, 'name' | 'address'>)`
+  const r = `MyEntity & {status: Pick<EntityName2, 'name' | 'address'>}`
 
   expect(Q.projectionToType(entity, projection, DataSample.model)).toEqual(r);
 });
@@ -58,7 +58,7 @@ test('query to type', () => {
     [DataSample.entityName2]: {}
   }
 
-  const r = `{MyEntity: (MyEntity & (status: Pick<EntityName2, 'name' | 'address'>))[], EntityName2: (EntityName2)[]}`
+  const r = `{MyEntity: (MyEntity & {status: Pick<EntityName2, 'name' | 'address'>})[], EntityName2: (EntityName2)[]}`
 
   expect(Q.queryToType(q, DataSample.model)).toEqual(r)
 })
@@ -67,23 +67,23 @@ test('find entity', () => {
   expect(Q.findEntity(DataSample.entityName1, 'status', DataSample.model)).toEqual(DataSample.entityName2)
 })
 
-test('refTypes', () => {
+test('refTypes - 1', () => {
   const references:References = {
     [DataSample.entityName2]: {projection:{name: true}}
   }
   
   const r = Q.refTypes(references, DataSample.model);
-  const e = ` & (EntityName2: (Pick<EntityName2, 'name'>)[])`
+  const e = ` & {EntityName2: (Pick<EntityName2, 'name'>)[]}`
   expect(r).toEqual(e)
 })
 
-test('refTypes', () => {
+test('refTypes - 2', () => {
   const projection:Projection = {status: {name: true, address: true}};
   const references:References = {
     [DataSample.entityName2]: {projection:{name: true}}
   }
   
   const r = Q.paramsToType(entity, projection, references, DataSample.model);
-  const e = `(MyEntity & (status: Pick<EntityName2, 'name' | 'address'>) & (EntityName2: (Pick<EntityName2, 'name'>)[]))[]`
+  const e = `(MyEntity & {status: Pick<EntityName2, 'name' | 'address'>} & {EntityName2: (Pick<EntityName2, 'name'>)[]})[]`
   expect(r).toEqual(e)
 })
