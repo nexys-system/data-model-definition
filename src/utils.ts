@@ -6,3 +6,5 @@ export const isJson = (j:string):any => {
     return false;
   }
 }
+
+export const ghUrl = 'https://github.com/Nexysweb/ddl';
