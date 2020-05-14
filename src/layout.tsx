@@ -8,7 +8,7 @@ const style = {
   boxShadow: '0 .25rem .75rem rgba(0, 0, 0, .05)'
 }
 
-const title = 'Digis DDL';
+const title = 'Nexys DDL';
 
 const menus = [ 
  {link: '/validate/schema', name: 'Validate Schema'},
