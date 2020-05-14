@@ -1,5 +1,4 @@
 import * as T from '../type';
-import * as TQ from './type';
 
 const makeRandomString = (length:number) => {
   let result = '';

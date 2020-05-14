@@ -54,14 +54,14 @@ const checkTypes = (model:T.DdEntity2[]) => {
 /**
  * validates a model of the JSON ddl
  */
-const validateModelDef = (model:string):{status: boolean, errors: string[] | null} => {
+const validateModelDef = (model:object):{status: boolean, errors: string[] | null} => {
   const schema = modelDefSchema;
 
   const result = schema.validate(model, { abortEarly: false });
 
   if (result.error === undefined || result.error === null) {
     // here check if types all exist
-    const jModel:T.DdEntity2[] = JSON.parse(model)
+    const jModel:T.DdEntity2[] = model as T.DdEntity2[]
     const errors = checkTypes(jModel);
 
     if (errors.length > 0) {

@@ -21,7 +21,6 @@ export const mapTypeToTs = (t:string) => {
   return `{id: number} | ${t}`;
 }
 
-
 export interface DataDefField {
   type: string,
   name: string,
