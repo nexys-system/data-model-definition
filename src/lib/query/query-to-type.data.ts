@@ -7,8 +7,8 @@ export const m1:TS.DdEntity2 = {
   name: entityName1,
   fields: [
     {name: 'f1', type: 'String'},
-    {name: 'f2', type: 'Integer'},
-    {name: 'f1', type: 'Boolean', optional: true},
+    {name: 'f2', type: 'Int'},
+    {name: 'f3', type: 'Boolean', optional: true},
     {name: 'status', type: entityName2, optional: true}
   ]
 }
