@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es6",
+    "module": "commonjs",
     "declaration": true,
+    "rootDir": "src/lib",
     "outDir": "dist/",
     "strict": true,
     "allowSyntheticDefaultImports": true,
@@ -10,8 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "lib": [
       "dom",
-      "dom.iterable",
-      "esnext"
+      "dom.iterable"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -24,5 +24,7 @@
   "include": [
     "src/lib/**/*"
   ],
-  "exclude" : ["src/**/*.test.ts"]
+  "exclude": [
+    "src/**/*.test.ts"
+  ]
 }
