@@ -13,6 +13,8 @@ const title = 'Digis DDL';
 const menus = [ 
  {link: '/validate/schema', name: 'Validate Schema'},
  {link: '/openApi', name: 'Open Api Conversion'},
+ {link: '/toTS', name: 'Model to TypeScript'},
+ {link: '/queryToTS', name: 'Query to TypeScript'},
 ];
 
 export default (props:any) => {

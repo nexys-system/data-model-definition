@@ -10,8 +10,9 @@ import Layout from './layout';
 import Main from './app';
 import ValidateSchema from './validation/schema';
 import OpenAPi from './open-api';
-import toTS from './to-ts';
-import toJoi from './to-ts/joi'
+import toTS from './model-to-ts';
+import queryToTS from './query-to-ts';
+import toJoi from './model-to-ts/joi'
 
 const NotFound = () => <p>Page Not Found</p>;
 
@@ -22,6 +23,7 @@ function Router() {
       <Route exact path={'/validate/schema'} component={ValidateSchema}/>
       <Route exact path={'/openApi'} component={OpenAPi}/>
       <Route exact path={'/toTS'} component={toTS}/>
+      <Route exact path={'/queryToTs'} component={queryToTS}/>
       <Route exact path={'/toJoi'} component={toJoi}/>
       <Route path="/" component={NotFound} />
     </Switch>
