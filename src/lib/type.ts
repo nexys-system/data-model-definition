@@ -1,17 +1,3 @@
-export interface DdEntity {
-  name: string,
-  uuid?: boolean,
-  table?: string,
-  params: DdParams[]
-}
-
-export interface DdParams {
-  arg: string,
-  column?: string,
-  type: string,
-  optional?: boolean
-}
-
 export interface DdEntity2 {
   name: string,
   uuid?: boolean,
@@ -26,7 +12,24 @@ export interface DdParams2 {
   optional?: boolean
 }
 
-export type OpenApiType = 'boolean' | 'string' | 'integer' | 'number' | 'LocalDateTime' | 'LocalDateTime'
+// old interface - deprecated
+export interface DdEntity {
+  name: string,
+  uuid?: boolean,
+  table?: string,
+  params: DdParams[]
+}
+
+export interface DdParams {
+  arg: string,
+  column?: string,
+  type: string,
+  optional?: boolean
+}
+// end old
+
+export type DllType =     'Boolean' | 'String' | 'Int' | 'Long'   | 'Double' | 'BigDecimal'  | 'LocalDateTime' | 'LocalDate'
+export type OpenApiType = 'boolean' | 'string' | 'integer'        | 'number'                 | 'LocalDateTime' | 'LocalDate'
 
 export interface OpenApiProperty {
   [k:string]: {type: OpenApiType}
@@ -45,9 +48,9 @@ export interface OpenApiSchema {
 
 
 // list of JVM types that are supported
-export const jvmTypes = ['Int', 'Long', 'Double', 'LocalDateTime', 'LocalDate', 'Boolean', 'BigDecimal', 'String'];
+export const jvmTypes:DllType[] = ['Int', 'Long', 'Double', 'LocalDateTime', 'LocalDate', 'Boolean', 'BigDecimal', 'String'];
 
-export const jvmToSqlType = (i:string):string => {
+export const jvmToSqlType = (i:DllType):string => {
   switch (i) {
     case 'Int':
       return 'INT';
@@ -73,7 +76,7 @@ export const jvmToSqlType = (i:string):string => {
   }
 };
 
-export const sqlToJvmType = (i:string):string => {
+export const sqlToJvmType = (i:string):DllType => {
   switch (i.toLowerCase()) {
     case 'int':
       return 'Int';
@@ -101,6 +104,4 @@ export const sqlToJvmType = (i:string):string => {
 };
 
 export const modelToSqlType = jvmToSqlType;
-export const modelToJvmType = (x:string):string => x; // Currently equivalent
-
-
+export const modelToJvmType = (x:DllType):DllType => x; // Currently equivalent
