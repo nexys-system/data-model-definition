@@ -6,8 +6,12 @@ interface FiltersIn {
   $in: (number | string | boolean | Date)[]
 }
 
+interface FiltersNe {
+  $ne: (null | number | string | boolean | Date)
+}
+
 export interface Filters {
-  [attr:string]: string | boolean | number | Date | FiltersIn | Filters
+  [attr:string]: string | boolean | number | Date | FiltersIn | FiltersNe | Filters
 }
 
 // todo: doublecheck, currently same structure as Query
