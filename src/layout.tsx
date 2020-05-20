@@ -17,6 +17,7 @@ const menus = [
  {link: '/openApi', name: 'Open Api Conversion'},
  {link: '/toTS', name: 'Model to TypeScript'},
  {link: '/queryToTS', name: 'Query to TypeScript'},
+ {link: '/fake-data', name: 'Fake Data'}
 ];
 
 export default (props:any) => {

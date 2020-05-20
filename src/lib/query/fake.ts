@@ -63,8 +63,6 @@ export const any = (type:string, optional: boolean = false):any | null => {
   }
 }
 
-const types = ['Int', 'Float', 'Boolean', 'LocalDateTime', 'LocalDate', 'String']
-
 export const row = (rowDef: T.DdParams2[], isUuid: boolean = false):{[k:string]: any} => {
   const o:{[k:string]: any} = {id: integer()};
 
@@ -74,7 +72,7 @@ export const row = (rowDef: T.DdParams2[], isUuid: boolean = false):{[k:string]:
     o['id'] = integer();
   }
 
-  rowDef.map(r => {
+  rowDef.forEach(r => {
     const a = any(r.type, r.optional);
     if (a !== undefined) {
       o[r.name] = a;

@@ -18,9 +18,8 @@ test('boolean', () => {
   expect(typeof F.boolean()).toEqual('boolean')
 });
 
-test('dat2', () => {
+test('date', () => {
   const d = F.date();
-  //console.log(d)
   expect(typeof d).toEqual('object')
   expect(d instanceof Date).toEqual(true)
 });
@@ -42,6 +41,8 @@ test('fakeRow', () => {
 
   const r = F.row(e);
 
+  console.log(r)
+
   expect(typeof r.id).toEqual('number')
   expect(typeof r.myName).toEqual('string')
   expect(typeof r.myBool).toEqual('boolean')
@@ -51,6 +52,7 @@ test('fakeRow', () => {
 
   // with projection
   const r2 = I.rowAndProjection(e,{myDate: false, myBool: false, myNumber: false});
+  console.log(r2)
   expect(typeof r2.id).toEqual('number')
   expect(typeof r2.myName).toEqual('string')
   expect(typeof r2.myBool).toEqual('undefined')

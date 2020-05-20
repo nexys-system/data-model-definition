@@ -31,7 +31,7 @@ const checkTypes = (model:T.DdEntity2[]) => {
   const tNames:string[] = model.map(m => {
     const t:string[] = m.fields
     .map(p => p.type)
-    .filter(p => Types.indexOf(p) < 0);
+    .filter(p => p in Types);
 
     ts = ts.concat(t);
 

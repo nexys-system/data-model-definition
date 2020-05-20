@@ -13,6 +13,7 @@ import OpenAPi from './open-api';
 import toTS from './model-to-ts';
 import queryToTS from './query-to-ts';
 import toJoi from './model-to-ts/joi'
+import FakeData from './fake-data';
 
 const NotFound = () => <p>Page Not Found</p>;
 
@@ -25,6 +26,7 @@ function Router() {
       <Route exact path={'/toTS'} component={toTS}/>
       <Route exact path={'/queryToTs'} component={queryToTS}/>
       <Route exact path={'/toJoi'} component={toJoi}/>
+      <Route exact path={'/fake-data'} component={FakeData}/>
       <Route path="/" component={NotFound} />
     </Switch>
   </Layout>);
