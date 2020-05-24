@@ -10,7 +10,7 @@ There is an available UI to test different JSON structures described [here](http
 
 Check out
 * [CRUD.md](https://github.com/Nexysweb/ddl/blob/master/crud.md)
-* [FetchR.md](https://github.com/Nexysweb/ddl/blob/master/fetch-r.md)
+* [Data Layer Access.md](https://github.com/Nexysweb/ddl/blob/master/data-layer-access.md)
 
 We define an array of entities. All entities have attributes and are assigned primary keys in the form of ids or uuids.
 
