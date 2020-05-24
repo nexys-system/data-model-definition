@@ -1,4 +1,4 @@
-# FetchR
+# Data Layer Access (DAL)
 
 taken from https://digis.gitbook.io/lowcode
 
