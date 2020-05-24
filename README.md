@@ -9,8 +9,8 @@
 There is an available UI to test different JSON structures described [here](https://nexysweb.github.io/ddl/)
 
 Check out
-* [CRUD.md](https://github.com/Nexysweb/ddl/blob/master/crud.md)
-* [Data Layer Access.md](https://github.com/Nexysweb/ddl/blob/master/data-layer-access.md)
+* [CRUD.md](https://github.com/Nexysweb/ddl/blob/master/crud)
+* [Data Layer Access.md](https://github.com/Nexysweb/ddl/blob/master/data-layer-access)
 
 We define an array of entities. All entities have attributes and are assigned primary keys in the form of ids or uuids.
 
