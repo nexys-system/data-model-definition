@@ -2,50 +2,49 @@
 
 [![npm version](https://badge.fury.io/js/%40nexys%2Fddl.svg)](https://www.npmjs.com/package/@nexys/ddl)
 [![npm version](https://img.shields.io/npm/v/@nexys/ddl.svg)](https://www.npmjs.com/package/@nexys/ddl)
-[![Travis](https://travis-ci.com/Nexysweb/ddl.svg?branch=master)](https://travis-ci.com/github/Nexysweb/ddl)
+[![Test Package](https://github.com/nexys-system/data-model-definition/actions/workflows/yarn.yml/badge.svg)](https://github.com/nexys-system/data-model-definition/actions/workflows/yarn.yml)
 
 ### See it in action
 
 There is an available UI to test different JSON structures described [here](https://nexysweb.github.io/ddl/)
 
 Check out
-* [CRUD](https://github.com/Nexysweb/ddl/blob/master/crud.md)
-* [Data Layer Access](https://github.com/Nexysweb/ddl/blob/master/data-layer-access.md)
+
+- [CRUD](https://github.com/Nexysweb/ddl/blob/master/crud.md)
+- [Data Layer Access](https://github.com/Nexysweb/ddl/blob/master/data-layer-access.md)
 
 We define an array of entities. All entities have attributes and are assigned primary keys in the form of ids or uuids.
 
 ## Entity
 
-| Arg Name    |  Possible values                                                                 | Example     |
-|-------------|----------------------------------------------------------------------------------|-------------|
-| name        | name of the entity. has to start with a capital letter                           | "Country"   |
-| table       | name of the SQL table. This field is optional, if not given the table is the snake case version of name                                                                                                        | `my_country`|
-| uuid        | boolean, if set to true, the primary key is a uuid vs a id                       | `false`     |
-| withOrder   | allows ordering (UI: drag/drop)                                                  | `false`     |
-| description | description of the entity, optional                                              |             |
-| logUser     | saves user id                                                                    | `false`     |
-| isLog       | add log logic in table                                                           | `false`     |
-| logTable    | creates mirror log table                                                         | `false`     |
-| extends     | extends a particular preprogrammed entity (e.g. user)                            | `null`      |
-| uniqueSet   | array with combination of params that are unique (e.g `["countryId", "userId"]`) | `null`      |
+| Arg Name    | Possible values                                                                                         | Example      |
+| ----------- | ------------------------------------------------------------------------------------------------------- | ------------ |
+| name        | name of the entity. has to start with a capital letter                                                  | "Country"    |
+| table       | name of the SQL table. This field is optional, if not given the table is the snake case version of name | `my_country` |
+| uuid        | boolean, if set to true, the primary key is a uuid vs a id                                              | `false`      |
+| withOrder   | allows ordering (UI: drag/drop)                                                                         | `false`      |
+| description | description of the entity, optional                                                                     |              |
+| logUser     | saves user id                                                                                           | `false`      |
+| isLog       | add log logic in table                                                                                  | `false`      |
+| logTable    | creates mirror log table                                                                                | `false`      |
+| extends     | extends a particular preprogrammed entity (e.g. user)                                                   | `null`       |
+| uniqueSet   | array with combination of params that are unique (e.g `["countryId", "userId"]`)                        | `null`       |
 
 ## Attribute
 
-
-| Arg Name    |  Possible values                                                | Default     |
-|-------------|-----------------------------------------------------------------|-------------|
-| Name        | *field name*                                                    | -           |
-| type        | [see section](#field-types)                                     | string      |
-| optional    | true/false                                                      | `false`     |
-| constraints | [see section](#constraints)                                     | `[]`        |
-| description | description of the attribute                                    |             |
-| ui          | {textarea, datepicker, slider, etc..}                           | `fieldType` |
-
+| Arg Name    | Possible values                       | Default     |
+| ----------- | ------------------------------------- | ----------- |
+| Name        | _field name_                          | -           |
+| type        | [see section](#field-types)           | string      |
+| optional    | true/false                            | `false`     |
+| constraints | [see section](#constraints)           | `[]`        |
+| description | description of the attribute          |             |
+| ui          | {textarea, datepicker, slider, etc..} | `fieldType` |
 
 ### Field Types
 
 | Type     | Example values       |
-|----------|----------------------|
+| -------- | -------------------- |
 | Int      | 1, 2, 3              |
 | Long     | 65432345, 2345432345 |
 | String   | hello                |
@@ -73,22 +72,23 @@ LocalDate => Datetime
 
 ### Constraints
 
-| Arg Name    |  Possible values                                                | Default     |
-|-------------|-----------------------------------------------------------------|-------------|
-| typeId      | [see section](#constraint-types)                                | -           |
-| value       | value of the constraint                                         | -           |
-| msg         | overrides default message                                       | -           |
+| Arg Name | Possible values                  | Default |
+| -------- | -------------------------------- | ------- |
+| typeId   | [see section](#constraint-types) | -       |
+| value    | value of the constraint          | -       |
+| msg      | overrides default message        | -       |
 
 #### Constraint Types
-* 1: equal `=` (number)
-* 2: greater than `>` (number(
-* 3: less than `<` (number
-* 4: greater than or equal `>=` (number)
-* 5: less than or equal `<=` (number)
-* 6: length (string) => https://stackoverflow.com/questions/9043820/regex-to-match-words-of-a-certain-length
-* 7: Regex (string)
-* 8: belongs to a predefined set: [9, 87, 34] (all)
-* 9: async call to API (link to an API request) (string)
+
+- 1: equal `=` (number)
+- 2: greater than `>` (number(
+- 3: less than `<` (number
+- 4: greater than or equal `>=` (number)
+- 5: less than or equal `<=` (number)
+- 6: length (string) => https://stackoverflow.com/questions/9043820/regex-to-match-words-of-a-certain-length
+- 7: Regex (string)
+- 8: belongs to a predefined set: [9, 87, 34] (all)
+- 9: async call to API (link to an API request) (string)
 
 ## Checking format
 
@@ -110,13 +110,13 @@ System variables are not speicified in the model.
 
 Examples are:
 
-* id / uuid
-* dateAdded
-* dateEdited
+- id / uuid
+- dateAdded
+- dateEdited
 
 ## Example (simple)
 
-This is an example of a simple model, that links countries and cities. 
+This is an example of a simple model, that links countries and cities.
 
 https://github.com/Nexysweb/ddl/tree/master/src/example/simple-country-city.json
 
