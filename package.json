@@ -17,9 +17,6 @@
     "build2": "PUBLIC_URL=/ddl react-scripts build; rm -rf docs; mv build docs; cp docs/index.html docs/404.html",
     "buildPackage": "tsc -p tsconfig.build.json"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
