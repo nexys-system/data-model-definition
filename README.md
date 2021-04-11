@@ -6,7 +6,7 @@
 
 ### See it in action
 
-There is an available UI to test different JSON structures described [here](https://nexysweb.github.io/ddl/)
+There is an available UI to test different JSON structures described [here](https://nexys-system.github.io/data-model-definition/)
 
 Check out
 
@@ -57,7 +57,7 @@ We define an array of entities. All entities have attributes and are assigned pr
 
 Every entity name automatically becomes a type. Hence the last example of the table where the type is `Country`, referring to the entity `Country` and creating a relation with that other entity.
 
-a more formal version can be found in https://github.com/Nexysweb/DevelopmentConsultingFramework/blob/master/src/types.js
+a more formal version can be found in https://github.com/nexys-system/data-model-definition/blob/master/src/lib/type.ts
 
 #### mapping SQL JSON-ddl
 
@@ -92,7 +92,7 @@ LocalDate => Datetime
 
 ## Checking format
 
-The format can be checked with the `schema-validation`: https://github.com/Nexysweb/DevelopmentConsultingFramework/blob/master/src/schema-validation.js
+The format can be checked with the `schema-validation`: https://github.com/nexys-system/data-model-definition/blob/master/src/lib/schema-validation.ts
 
 ## Variable types
 
