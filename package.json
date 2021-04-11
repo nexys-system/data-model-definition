@@ -11,8 +11,8 @@
     "@types/hapi__joi": "^16.0.12"
   },
   "scripts": {
-    "start": "snowpack dev",
-    "build": "SNOWPACK_PUBLIC_URL=/data-model-definition snowpack build",
+    "start": "SNOWPACK_PUBLIC_URL= snowpack dev",
+    "build": "snowpack build",
     "test": "jest",
     "build2": "PUBLIC_URL=/ddl react-scripts build; rm -rf docs; mv build docs; cp docs/index.html docs/404.html",
     "buildPackage": "tsc -p tsconfig.build.json"
