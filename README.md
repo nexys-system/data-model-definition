@@ -10,8 +10,8 @@ There is an available UI to test different JSON structures described [here](http
 
 Check out
 
-- [CRUD](https://github.com/Nexysweb/ddl/blob/master/crud.md)
-- [Data Layer Access](https://github.com/Nexysweb/ddl/blob/master/data-layer-access.md)
+- [CRUD](https://github.com/nexys-system/data-model-definition/blob/master/crud.md)
+- [Data Layer Access](https://github.com/nexys-system/data-model-definition/blob/master/data-layer-access.md)
 
 We define an array of entities. All entities have attributes and are assigned primary keys in the form of ids or uuids.
 
@@ -118,8 +118,8 @@ Examples are:
 
 This is an example of a simple model, that links countries and cities.
 
-https://github.com/Nexysweb/ddl/tree/master/src/example/simple-country-city.json
+https://github.com/nexys-system/data-model-definition/tree/master/src/example/simple-country-city.json
 
 ## Example (advanced)
 
-https://github.com/Nexysweb/ddl/tree/master/src/example/advanced.ts
+https://github.com/nexys-system/data-model-definition/tree/master/src/example/advanced.ts
