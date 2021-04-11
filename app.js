@@ -3,7 +3,7 @@ import * as __SNOWPACK_ENV__ from './_snowpack/env.js';
 import React from "./_snowpack/pkg/react.js";
 import Icon from "./components/icon.js";
 import {ghUrl} from "./utils.js";
-const sha = __SNOWPACK_ENV__.SNOWPACK_GIT_SHA || "sha_undefined";
+const sha = __SNOWPACK_ENV__.SNOWPACK_PUBLIC_GIT_SHA || "sha_undefined";
 const ghSha = ghUrl + "/commit/" + sha;
 export default () => /* @__PURE__ */ React.createElement("div", {
   className: "container"
