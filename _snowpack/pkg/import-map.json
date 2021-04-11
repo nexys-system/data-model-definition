@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "@hapi/joi": "./@hapi/joi.js",
+    "js-yaml": "./js-yaml.js",
+    "react": "./react.js",
+    "react-dom": "./react-dom.js",
+    "react-router-dom": "./react-router-dom.js"
+  }
+}
