@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "./components/icon";
 import { ghUrl } from "./utils";
 
-const sha: string = import.meta.env.SNOWPACK_GIT_SHA || "sha_undefined";
+const sha: string = import.meta.env.SNOWPACK_PUBLIC_GIT_SHA || "sha_undefined";
 const ghSha = ghUrl + "/commit/" + sha;
 
 export default () => (
