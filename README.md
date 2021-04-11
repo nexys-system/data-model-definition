@@ -3,6 +3,8 @@
 [![npm version](https://badge.fury.io/js/%40nexys%2Fddl.svg)](https://www.npmjs.com/package/@nexys/ddl)
 [![npm version](https://img.shields.io/npm/v/@nexys/ddl.svg)](https://www.npmjs.com/package/@nexys/ddl)
 [![Test Package](https://github.com/nexys-system/data-model-definition/actions/workflows/yarn.yml/badge.svg)](https://github.com/nexys-system/data-model-definition/actions/workflows/yarn.yml)
+[![Deployment](https://github.com/nexys-system/data-model-definition/actions/workflows/deploy.yml/badge.svg)](https://github.com/nexys-system/data-model-definition/actions/workflows/deploy.yml)
+[![Publish](https://github.com/nexys-system/data-model-definition/actions/workflows/publish.yml/badge.svg)](https://github.com/nexys-system/data-model-definition/actions/workflows/publish.yml)
 
 ### See it in action
 
