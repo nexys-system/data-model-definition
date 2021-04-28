@@ -68,7 +68,7 @@ var common = {
 
 // YAML error class. http://stackoverflow.com/questions/8458984
 
-function YAMLException$1(reason, mark) {
+function YAMLException(reason, mark) {
   // Super constructor
   Error.call(this);
 
@@ -89,11 +89,11 @@ function YAMLException$1(reason, mark) {
 
 
 // Inherit from Error
-YAMLException$1.prototype = Object.create(Error.prototype);
-YAMLException$1.prototype.constructor = YAMLException$1;
+YAMLException.prototype = Object.create(Error.prototype);
+YAMLException.prototype.constructor = YAMLException;
 
 
-YAMLException$1.prototype.toString = function toString(compact) {
+YAMLException.prototype.toString = function toString(compact) {
   var result = this.name + ': ';
 
   result += this.reason || '(unknown reason)';
@@ -106,7 +106,7 @@ YAMLException$1.prototype.toString = function toString(compact) {
 };
 
 
-var exception = YAMLException$1;
+var exception = YAMLException;
 
 function Mark(name, buffer, position, line, column) {
   this.name     = name;
@@ -210,7 +210,7 @@ function compileStyleAliases(map) {
   return result;
 }
 
-function Type$1(tag, options) {
+function Type(tag, options) {
   options = options || {};
 
   Object.keys(options).forEach(function (name) {
@@ -235,7 +235,7 @@ function Type$1(tag, options) {
   }
 }
 
-var type = Type$1;
+var type = Type;
 
 /*eslint-disable max-len*/
 
@@ -286,7 +286,7 @@ function compileMap(/* lists... */) {
 }
 
 
-function Schema$1(definition) {
+function Schema(definition) {
   this.include  = definition.include  || [];
   this.implicit = definition.implicit || [];
   this.explicit = definition.explicit || [];
@@ -303,15 +303,15 @@ function Schema$1(definition) {
 }
 
 
-Schema$1.DEFAULT = null;
+Schema.DEFAULT = null;
 
 
-Schema$1.create = function createSchema() {
+Schema.create = function createSchema() {
   var schemas, types;
 
   switch (arguments.length) {
     case 1:
-      schemas = Schema$1.DEFAULT;
+      schemas = Schema.DEFAULT;
       types = arguments[0];
       break;
 
@@ -327,7 +327,7 @@ Schema$1.create = function createSchema() {
   schemas = common.toArray(schemas);
   types = common.toArray(types);
 
-  if (!schemas.every(function (schema) { return schema instanceof Schema$1; })) {
+  if (!schemas.every(function (schema) { return schema instanceof Schema; })) {
     throw new exception('Specified list of super schemas (or a single Schema object) contains a non-Schema object.');
   }
 
@@ -335,14 +335,14 @@ Schema$1.create = function createSchema() {
     throw new exception('Specified list of YAML types (or a single Type object) contains a non-Type object.');
   }
 
-  return new Schema$1({
+  return new Schema({
     include: schemas,
     explicit: types
   });
 };
 
 
-var schema = Schema$1;
+var schema = Schema;
 
 var str = new type('tag:yaml.org,2002:str', {
   kind: 'scalar',
@@ -829,8 +829,8 @@ var NodeBuffer;
 
 try {
   // A trick for browserified version, to not include `Buffer` shim
-  var _require$1 = commonjsRequire;
-  NodeBuffer = _require$1('buffer').Buffer;
+  var _require = commonjsRequire;
+  NodeBuffer = _require('buffer').Buffer;
 } catch (__) {}
 
 
@@ -960,8 +960,8 @@ var binary = new type('tag:yaml.org,2002:binary', {
   represent: representYamlBinary
 });
 
-var _hasOwnProperty$3 = Object.prototype.hasOwnProperty;
-var _toString$2       = Object.prototype.toString;
+var _hasOwnProperty = Object.prototype.hasOwnProperty;
+var _toString       = Object.prototype.toString;
 
 function resolveYamlOmap(data) {
   if (data === null) return true;
@@ -973,10 +973,10 @@ function resolveYamlOmap(data) {
     pair = object[index];
     pairHasKey = false;
 
-    if (_toString$2.call(pair) !== '[object Object]') return false;
+    if (_toString.call(pair) !== '[object Object]') return false;
 
     for (pairKey in pair) {
-      if (_hasOwnProperty$3.call(pair, pairKey)) {
+      if (_hasOwnProperty.call(pair, pairKey)) {
         if (!pairHasKey) pairHasKey = true;
         else return false;
       }
@@ -1051,7 +1051,7 @@ var pairs = new type('tag:yaml.org,2002:pairs', {
   construct: constructYamlPairs
 });
 
-var _hasOwnProperty$2 = Object.prototype.hasOwnProperty;
+var _hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
 function resolveYamlSet(data) {
   if (data === null) return true;
@@ -1059,7 +1059,7 @@ function resolveYamlSet(data) {
   var key, object = data;
 
   for (key in object) {
-    if (_hasOwnProperty$2.call(object, key)) {
+    if (_hasOwnProperty$1.call(object, key)) {
       if (object[key] !== null) return false;
     }
   }
@@ -1186,8 +1186,8 @@ var esprima;
 //
 try {
   // workaround to exclude package from browserify list.
-  var _require = commonjsRequire;
-  esprima = _require('esprima');
+  var _require$1 = commonjsRequire;
+  esprima = _require$1('esprima');
 } catch (_) {
   /* eslint-disable no-redeclare */
   /* global window */
@@ -1287,7 +1287,7 @@ var default_full = schema.DEFAULT = new schema({
 
 
 
-var _hasOwnProperty$1 = Object.prototype.hasOwnProperty;
+var _hasOwnProperty$2 = Object.prototype.hasOwnProperty;
 
 
 var CONTEXT_FLOW_IN   = 1;
@@ -1407,7 +1407,7 @@ for (var i = 0; i < 256; i++) {
 }
 
 
-function State$1(input, options) {
+function State(input, options) {
   this.input = input;
 
   this.filename  = options['filename']  || null;
@@ -1508,7 +1508,7 @@ var directiveHandlers = {
       throwError(state, 'ill-formed tag handle (first argument) of the TAG directive');
     }
 
-    if (_hasOwnProperty$1.call(state.tagMap, handle)) {
+    if (_hasOwnProperty$2.call(state.tagMap, handle)) {
       throwError(state, 'there is a previously declared suffix for "' + handle + '" tag handle');
     }
 
@@ -1555,7 +1555,7 @@ function mergeMappings(state, destination, source, overridableKeys) {
   for (index = 0, quantity = sourceKeys.length; index < quantity; index += 1) {
     key = sourceKeys[index];
 
-    if (!_hasOwnProperty$1.call(destination, key)) {
+    if (!_hasOwnProperty$2.call(destination, key)) {
       destination[key] = source[key];
       overridableKeys[key] = true;
     }
@@ -1606,8 +1606,8 @@ function storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valu
     }
   } else {
     if (!state.json &&
-        !_hasOwnProperty$1.call(overridableKeys, keyNode) &&
-        _hasOwnProperty$1.call(_result, keyNode)) {
+        !_hasOwnProperty$2.call(overridableKeys, keyNode) &&
+        _hasOwnProperty$2.call(_result, keyNode)) {
       state.line = startLine || state.line;
       state.position = startPos || state.position;
       throwError(state, 'duplicated mapping key');
@@ -2486,7 +2486,7 @@ function readTagProperty(state) {
   if (isVerbatim) {
     state.tag = tagName;
 
-  } else if (_hasOwnProperty$1.call(state.tagMap, tagHandle)) {
+  } else if (_hasOwnProperty$2.call(state.tagMap, tagHandle)) {
     state.tag = state.tagMap[tagHandle] + tagName;
 
   } else if (tagHandle === '!') {
@@ -2550,7 +2550,7 @@ function readAlias(state) {
 
   alias = state.input.slice(_position, state.position);
 
-  if (!_hasOwnProperty$1.call(state.anchorMap, alias)) {
+  if (!_hasOwnProperty$2.call(state.anchorMap, alias)) {
     throwError(state, 'unidentified alias "' + alias + '"');
   }
 
@@ -2693,7 +2693,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
           break;
         }
       }
-    } else if (_hasOwnProperty$1.call(state.typeMap[state.kind || 'fallback'], state.tag)) {
+    } else if (_hasOwnProperty$2.call(state.typeMap[state.kind || 'fallback'], state.tag)) {
       type = state.typeMap[state.kind || 'fallback'][state.tag];
 
       if (state.result !== null && type.kind !== state.kind) {
@@ -2780,7 +2780,7 @@ function readDocument(state) {
 
     if (ch !== 0) readLineBreak(state);
 
-    if (_hasOwnProperty$1.call(directiveHandlers, directiveName)) {
+    if (_hasOwnProperty$2.call(directiveHandlers, directiveName)) {
       directiveHandlers[directiveName](state, directiveName, directiveArgs);
     } else {
       throwWarning(state, 'unknown document directive "' + directiveName + '"');
@@ -2845,7 +2845,7 @@ function loadDocuments(input, options) {
     }
   }
 
-  var state = new State$1(input, options);
+  var state = new State(input, options);
 
   var nullpos = input.indexOf('\0');
 
@@ -2870,7 +2870,7 @@ function loadDocuments(input, options) {
 }
 
 
-function loadAll$1(input, iterator, options) {
+function loadAll(input, iterator, options) {
   if (iterator !== null && typeof iterator === 'object' && typeof options === 'undefined') {
     options = iterator;
     iterator = null;
@@ -2888,7 +2888,7 @@ function loadAll$1(input, iterator, options) {
 }
 
 
-function load$1(input, options) {
+function load(input, options) {
   var documents = loadDocuments(input, options);
 
   if (documents.length === 0) {
@@ -2901,25 +2901,25 @@ function load$1(input, options) {
 }
 
 
-function safeLoadAll$1(input, iterator, options) {
+function safeLoadAll(input, iterator, options) {
   if (typeof iterator === 'object' && iterator !== null && typeof options === 'undefined') {
     options = iterator;
     iterator = null;
   }
 
-  return loadAll$1(input, iterator, common.extend({ schema: default_safe }, options));
+  return loadAll(input, iterator, common.extend({ schema: default_safe }, options));
 }
 
 
-function safeLoad$1(input, options) {
-  return load$1(input, common.extend({ schema: default_safe }, options));
+function safeLoad(input, options) {
+  return load(input, common.extend({ schema: default_safe }, options));
 }
 
 
-var loadAll_1     = loadAll$1;
-var load_1        = load$1;
-var safeLoadAll_1 = safeLoadAll$1;
-var safeLoad_1    = safeLoad$1;
+var loadAll_1     = loadAll;
+var load_1        = load;
+var safeLoadAll_1 = safeLoadAll;
+var safeLoad_1    = safeLoad;
 
 var loader = {
 	loadAll: loadAll_1,
@@ -2935,8 +2935,8 @@ var loader = {
 
 
 
-var _toString       = Object.prototype.toString;
-var _hasOwnProperty = Object.prototype.hasOwnProperty;
+var _toString$2       = Object.prototype.toString;
+var _hasOwnProperty$3 = Object.prototype.hasOwnProperty;
 
 var CHAR_TAB                  = 0x09; /* Tab */
 var CHAR_LINE_FEED            = 0x0A; /* LF */
@@ -3003,7 +3003,7 @@ function compileStyleMap(schema, map) {
     }
     type = schema.compiledTypeMap['fallback'][tag];
 
-    if (type && _hasOwnProperty.call(type.styleAliases, style)) {
+    if (type && _hasOwnProperty$3.call(type.styleAliases, style)) {
       style = type.styleAliases[style];
     }
 
@@ -3034,7 +3034,7 @@ function encodeHex(character) {
   return '\\' + handle + common.repeat('0', length - string.length) + string;
 }
 
-function State(options) {
+function State$1(options) {
   this.schema        = options['schema'] || default_full;
   this.indent        = Math.max(1, (options['indent'] || 2));
   this.noArrayIndent = options['noArrayIndent'] || false;
@@ -3619,9 +3619,9 @@ function detectType(state, object, explicit) {
       if (type.represent) {
         style = state.styleMap[type.tag] || type.defaultStyle;
 
-        if (_toString.call(type.represent) === '[object Function]') {
+        if (_toString$2.call(type.represent) === '[object Function]') {
           _result = type.represent(object, style);
-        } else if (_hasOwnProperty.call(type.represent, style)) {
+        } else if (_hasOwnProperty$3.call(type.represent, style)) {
           _result = type.represent[style](object, style);
         } else {
           throw new exception('!<' + type.tag + '> tag resolver accepts not "' + style + '" style');
@@ -3648,7 +3648,7 @@ function writeNode(state, level, object, block, compact, iskey) {
     detectType(state, object, true);
   }
 
-  var type = _toString.call(state.dump);
+  var type = _toString$2.call(state.dump);
 
   if (block) {
     block = (state.flowLevel < 0 || state.flowLevel > level);
@@ -3758,10 +3758,10 @@ function inspectNode(object, objects, duplicatesIndexes) {
   }
 }
 
-function dump$1(input, options) {
+function dump(input, options) {
   options = options || {};
 
-  var state = new State(options);
+  var state = new State$1(options);
 
   if (!state.noRefs) getDuplicateReferences(input, state);
 
@@ -3770,12 +3770,12 @@ function dump$1(input, options) {
   return '';
 }
 
-function safeDump$1(input, options) {
-  return dump$1(input, common.extend({ schema: default_safe }, options));
+function safeDump(input, options) {
+  return dump(input, common.extend({ schema: default_safe }, options));
 }
 
-var dump_1     = dump$1;
-var safeDump_1 = safeDump$1;
+var dump_1     = dump;
+var safeDump_1 = safeDump;
 
 var dumper = {
 	dump: dump_1,
@@ -3789,20 +3789,20 @@ function deprecated(name) {
 }
 
 
-var Type                = type;
-var Schema              = schema;
+var Type$1                = type;
+var Schema$1              = schema;
 var FAILSAFE_SCHEMA     = failsafe;
 var JSON_SCHEMA         = json;
 var CORE_SCHEMA         = core;
 var DEFAULT_SAFE_SCHEMA = default_safe;
 var DEFAULT_FULL_SCHEMA = default_full;
-var load                = loader.load;
-var loadAll             = loader.loadAll;
-var safeLoad            = loader.safeLoad;
-var safeLoadAll         = loader.safeLoadAll;
-var dump                = dumper.dump;
-var safeDump            = dumper.safeDump;
-var YAMLException       = exception;
+var load$1                = loader.load;
+var loadAll$1             = loader.loadAll;
+var safeLoad$1            = loader.safeLoad;
+var safeLoadAll$1         = loader.safeLoadAll;
+var dump$1                = dumper.dump;
+var safeDump$1            = dumper.safeDump;
+var YAMLException$1       = exception;
 
 // Deprecated schema names from JS-YAML 2.0.x
 var MINIMAL_SCHEMA = failsafe;
@@ -3815,21 +3815,21 @@ var parse          = deprecated('parse');
 var compose        = deprecated('compose');
 var addConstructor = deprecated('addConstructor');
 
-var jsYaml$1 = {
-	Type: Type,
-	Schema: Schema,
+var jsYaml = {
+	Type: Type$1,
+	Schema: Schema$1,
 	FAILSAFE_SCHEMA: FAILSAFE_SCHEMA,
 	JSON_SCHEMA: JSON_SCHEMA,
 	CORE_SCHEMA: CORE_SCHEMA,
 	DEFAULT_SAFE_SCHEMA: DEFAULT_SAFE_SCHEMA,
 	DEFAULT_FULL_SCHEMA: DEFAULT_FULL_SCHEMA,
-	load: load,
-	loadAll: loadAll,
-	safeLoad: safeLoad,
-	safeLoadAll: safeLoadAll,
-	dump: dump,
-	safeDump: safeDump,
-	YAMLException: YAMLException,
+	load: load$1,
+	loadAll: loadAll$1,
+	safeLoad: safeLoad$1,
+	safeLoadAll: safeLoadAll$1,
+	dump: dump$1,
+	safeDump: safeDump$1,
+	YAMLException: YAMLException$1,
 	MINIMAL_SCHEMA: MINIMAL_SCHEMA,
 	SAFE_SCHEMA: SAFE_SCHEMA,
 	DEFAULT_SCHEMA: DEFAULT_SCHEMA,
@@ -3839,6 +3839,6 @@ var jsYaml$1 = {
 	addConstructor: addConstructor
 };
 
-var jsYaml = jsYaml$1;
+var jsYaml$1 = jsYaml;
 
-export default jsYaml;
+export default jsYaml$1;

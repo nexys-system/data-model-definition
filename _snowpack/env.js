@@ -1,5 +1,5 @@
-export const SNOWPACK_PUBLIC_GIT_SHA = "eefd07aa84da21a1cc933a9969f27e27487e912e";
+export const SNOWPACK_PUBLIC_GIT_SHA = "ec7b176ff2d9e5f1a55758b4649cbae3b8bdafd0";
 export const SNOWPACK_PUBLIC_URL = "/data-model-definition";
-export const MODE = "development";
-export const NODE_ENV = "development";
+export const MODE = "production";
+export const NODE_ENV = "production";
 export const SSR = false;
