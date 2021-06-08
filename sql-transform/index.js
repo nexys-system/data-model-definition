@@ -10,7 +10,8 @@ export default () => {
   };
   return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Textarea, {
     content: input,
-    onChange: (v) => setInput(v)
+    onChange: (v) => setInput(v),
+    placeholder: "enter SQL definition here"
   }), /* @__PURE__ */ React.createElement("button", {
     onClick: handleTransform,
     className: "btn btn-primary"
