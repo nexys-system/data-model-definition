@@ -12,6 +12,7 @@ import toTS from "./model-to-ts/index.js";
 import queryToTS from "./query-to-ts/index.js";
 import toJoi from "./model-to-ts/joi.js";
 import FakeData from "./fake-data/index.js";
+import SQLTransform from "./sql-transform/index.js";
 const NotFound = () => /* @__PURE__ */ React.createElement("p", null, "Page Not Found");
 function Router() {
   return /* @__PURE__ */ React.createElement(Layout, null, /* @__PURE__ */ React.createElement(Switch, null, /* @__PURE__ */ React.createElement(Route, {
@@ -42,6 +43,10 @@ function Router() {
     exact: true,
     path: "/fake-data",
     component: FakeData
+  }), /* @__PURE__ */ React.createElement(Route, {
+    exact: true,
+    path: "/sql-transform",
+    component: SQLTransform
   }), /* @__PURE__ */ React.createElement(Route, {
     path: "/",
     component: NotFound

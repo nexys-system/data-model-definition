@@ -13,7 +13,8 @@ const menus = [
   {link: "/openApi", name: "Open Api Conversion"},
   {link: "/toTS", name: "Model to TypeScript"},
   {link: "/queryToTS", name: "Query to TypeScript"},
-  {link: "/fake-data", name: "Fake Data"}
+  {link: "/fake-data", name: "Fake Data"},
+  {link: "/sql-transform", name: "SQL Transform"}
 ];
 export default (props) => {
   const header = /* @__PURE__ */ React.createElement("header", null, /* @__PURE__ */ React.createElement("div", {
