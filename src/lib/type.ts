@@ -8,7 +8,7 @@ export interface DdEntity2 {
 export interface DdParams2 {
   name: string,
   column?: string,
-  type: string,
+  type: DllType | string, // note string must be entity defined elsewhere in the model
   optional?: boolean
 }
 
