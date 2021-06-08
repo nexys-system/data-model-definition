@@ -36,14 +36,14 @@ test("tableDefToFields", () => {
   ).toEqual([
     { name: "date", optional: false, type: "LocalDateTime" },
     { name: "date_send_out", optional: false, type: "LocalDateTime" },
-    { name: "date_reminder", optional: false, type: "LocalDateTime" },
+    { name: "date_reminder", optional: true, type: "LocalDateTime" },
     { name: "date_close", optional: false, type: "LocalDateTime" },
     { name: "meeting_point", optional: false, type: "String" },
     { name: "group_size", optional: false, type: "Int" },
     { name: "type_id", optional: false, type: "Int" },
     { name: "name", optional: false, type: "String" },
     { name: "user_id", optional: false, type: "Int" },
-    { name: "comment", optional: false, type: "String" },
+    { name: "comment", optional: true, type: "String" },
     { name: "keyy", optional: false, type: "String" },
     { name: "email_title", optional: false, type: "String" },
     { name: "email_body", optional: false, type: "String" },
@@ -54,11 +54,11 @@ test("tableDefToFields", () => {
     { name: "location_id", optional: false, type: "Int" },
     { name: "status_id", optional: false, type: "Int" },
     { name: "date_added", optional: false, type: "LocalDateTime" },
-    { name: "is_email_html", optional: false, type: "Boolean" },
+    { name: "is_email_html", optional: true, type: "Boolean" },
     { name: "email_body_html", optional: false, type: "String" },
-    { name: "is_send_email_html", optional: false, type: "Boolean" },
+    { name: "is_send_email_html", optional: true, type: "Boolean" },
     { name: "send_email_body_html", optional: false, type: "String" },
-    { name: "email_from", optional: false, type: "Boolean" },
+    { name: "email_from", optional: true, type: "Boolean" },
   ]);
 });
 

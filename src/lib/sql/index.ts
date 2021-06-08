@@ -29,7 +29,7 @@ export const tableFieldToField = (fieldDef: string): DdParams2 => {
 
   const [_, pname, sqlType, isDefault] = f;
   const name = pname.trim();
-  const optional: boolean = isDefault === "NO" ? true : false;
+  const optional: boolean = isDefault.trim() === "NO" ? false : true;
   const type = getTypeFromSql(sqlType);
 
   return { name, type, optional };
