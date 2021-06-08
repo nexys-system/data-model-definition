@@ -18,6 +18,7 @@ const menus = [
   { link: "/toTS", name: "Model to TypeScript" },
   { link: "/queryToTS", name: "Query to TypeScript" },
   { link: "/fake-data", name: "Fake Data" },
+  { link: "/sql-transform", name: "SQL Transform" },
 ];
 
 export default (props: any) => {
