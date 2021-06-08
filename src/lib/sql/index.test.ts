@@ -33,7 +33,33 @@ test("tableDefToFields", () => {
   | send_email_body_html | mediumtext   | NO   |     | NULL                |                             |
   | email_from           | varchar(128) | YES  |     | NULL                |                             |
   +----------------------+--------------+------+-----+---------------------+-----------------------------+`)
-  ).toEqual([{"name": "id", "optional": false, "type": "Int"}, {"name": "date", "optional": false, "type": "LocalDateTime"}, {"name": "date_send_out", "optional": false, "type": "LocalDateTime"}, {"name": "date_reminder", "optional": false, "type": "LocalDateTime"}, {"name": "date_close", "optional": false, "type": "LocalDateTime"}, {"name": "meeting_point", "optional": false, "type": "String"}, {"name": "group_size", "optional": false, "type": "Int"}, {"name": "type_id", "optional": false, "type": "Int"}, {"name": "name", "optional": false, "type": "String"}, {"name": "user_id", "optional": false, "type": "Int"}, {"name": "comment", "optional": false, "type": "String"}, {"name": "keyy", "optional": false, "type": "String"}, {"name": "email_title", "optional": false, "type": "String"}, {"name": "email_body", "optional": false, "type": "String"}, {"name": "invitation_text", "optional": false, "type": "String"}, {"name": "send_email_title", "optional": false, "type": "String"}, {"name": "send_email_body", "optional": false, "type": "String"}, {"name": "lang", "optional": false, "type": "String"}, {"name": "location_id", "optional": false, "type": "Int"}, {"name": "status_id", "optional": false, "type": "Int"}, {"name": "date_added", "optional": false, "type": "LocalDateTime"}, {"name": "is_email_html", "optional": false, "type": "Boolean"}, {"name": "email_body_html", "optional": false, "type": "String"}, {"name": "is_send_email_html", "optional": false, "type": "Boolean"}, {"name": "send_email_body_html", "optional": false, "type": "String"}, {"name": "email_from", "optional": false, "type": "Boolean"}]);
+  ).toEqual([
+    { name: "date", optional: false, type: "LocalDateTime" },
+    { name: "date_send_out", optional: false, type: "LocalDateTime" },
+    { name: "date_reminder", optional: false, type: "LocalDateTime" },
+    { name: "date_close", optional: false, type: "LocalDateTime" },
+    { name: "meeting_point", optional: false, type: "String" },
+    { name: "group_size", optional: false, type: "Int" },
+    { name: "type_id", optional: false, type: "Int" },
+    { name: "name", optional: false, type: "String" },
+    { name: "user_id", optional: false, type: "Int" },
+    { name: "comment", optional: false, type: "String" },
+    { name: "keyy", optional: false, type: "String" },
+    { name: "email_title", optional: false, type: "String" },
+    { name: "email_body", optional: false, type: "String" },
+    { name: "invitation_text", optional: false, type: "String" },
+    { name: "send_email_title", optional: false, type: "String" },
+    { name: "send_email_body", optional: false, type: "String" },
+    { name: "lang", optional: false, type: "String" },
+    { name: "location_id", optional: false, type: "Int" },
+    { name: "status_id", optional: false, type: "Int" },
+    { name: "date_added", optional: false, type: "LocalDateTime" },
+    { name: "is_email_html", optional: false, type: "Boolean" },
+    { name: "email_body_html", optional: false, type: "String" },
+    { name: "is_send_email_html", optional: false, type: "Boolean" },
+    { name: "send_email_body_html", optional: false, type: "String" },
+    { name: "email_from", optional: false, type: "Boolean" },
+  ]);
 });
 
 test("tableFieldToField", () => {

@@ -1,23 +1,21 @@
-import { DdParams2 , DllType} from "../type";
+import { DdParams2, DllType } from "../type";
 
-
-
-const getTypeFromSql = (s: string):DllType => {
-  const sl = s.toLowerCase()
+const getTypeFromSql = (s: string): DllType => {
+  const sl = s.toLowerCase();
   if (sl.includes("bigint")) {
     return "Int";
   }
 
-  if (sl.includes('timestamp')) {
-    return 'LocalDateTime'
+  if (sl.includes("timestamp")) {
+    return "LocalDateTime";
   }
 
-  if (sl.includes('mediumtext')){
-    return 'String'
+  if (sl.includes("mediumtext")) {
+    return "String";
   }
 
-  if (sl.includes('tinyint') || sl.includes('varchar')){
-    return 'Boolean'
+  if (sl.includes("tinyint") || sl.includes("varchar")) {
+    return "Boolean";
   }
 
   throw Error('could not map sql type "' + s + '" to non sql type');
@@ -30,7 +28,7 @@ export const tableFieldToField = (fieldDef: string): DdParams2 => {
   }
 
   const [_, pname, sqlType, isDefault] = f;
-  const name = pname.trim()
+  const name = pname.trim();
   const optional: boolean = isDefault === "NO" ? true : false;
   const type = getTypeFromSql(sqlType);
 
@@ -40,14 +38,13 @@ export const tableFieldToField = (fieldDef: string): DdParams2 => {
 export const tableDefToFields = (sqlDef: string): DdParams2[] => {
   const t = sqlDef.trimEnd().split("\n");
 
-  return t.filter(x => {
-    const p = x.trim().substr(0,7)
+  return t
+    .filter((x) => {
+      const p = x.trim().substr(0, 7);
 
-    const b = (p === '| Field' || p === '+------' )
-                                      
+      const b = p === "| Field" || p === "+------" || p === "| id   ";
 
-    return !b
-  }).map(tableFieldToField)
-
-
+      return !b;
+    })
+    .map(tableFieldToField);
 };
