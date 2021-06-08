@@ -16,7 +16,11 @@ export default () => {
 
   return (
     <>
-      <Textarea content={input} onChange={(v) => setInput(v)} />
+      <Textarea
+        content={input}
+        onChange={(v) => setInput(v)}
+        placeholder={"enter SQL definition here"}
+      />
       <button onClick={handleTransform} className="btn btn-primary">
         Transform
       </button>
